@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置属性变量-->
+    <properties resource="jdbc.properties"/>
+    <!--配置别名-->
+    <typeAliases>
+        <package name="com.mybatis.learning.pojo"/>
+    </typeAliases>
+    <!--default配置环境默认，如果不指定就选他-->
+    <environments default="development">
+        <environment id="development">
+            <!--transactionManager 事务管理器类型 JDBC MANAGED-->
+            <transactionManager type="JDBC"/>
+            <!--dataSource 数据源（池）POOLED UNPOOLED  JNDI-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+        <!--另一个环境-->
+    </environments>
+    <mappers>
+        <!--sql映射文件创建好之后，需要将该文件路径配置到这里，也可以url定位-->
+        <mapper resource="StudentMapper.xml"/>
+    </mappers>
+    <!--引入标准输入输出-->
+
+</configuration>
